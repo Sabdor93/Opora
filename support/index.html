@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081225">
+  <meta name="description" content="Официальная техническая поддержка приложения Опора для iPhone и Mac.">
+  <title>Поддержка — Опора</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #081225;
+      --surface: #101e35;
+      --line: #293952;
+      --text: #edf4ff;
+      --muted: #a5b3ca;
+      --blue: #589fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--blue); }
+
+    .container {
+      width: min(1050px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,18,37,.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .navigation {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: linear-gradient(145deg,#65b0ff,#2355a9);
+      box-shadow: 0 5px 24px #2462ba55;
+      font-size: 25px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav .active { color: var(--blue); }
+
+    .hero {
+      padding: 80px 0 75px;
+      background:
+        radial-gradient(ellipse at 75% 25%,
+          #173b75 0%, transparent 55%);
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(39px,5vw,62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      margin: 20px 0;
+    }
+
+    h1 span { color: var(--blue); }
+
+    .lead {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    section { padding: 60px 0; }
+
+    .section-title {
+      font-size: clamp(26px,3vw,35px);
+      margin: 0 0 14px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 750px;
+      margin-bottom: 27px;
+    }
+
+    .contact {
+      border: 1px solid #375174;
+      border-radius: 20px;
+      padding: 35px;
+      background: linear-gradient(135deg,#182e50,#101d33);
+    }
+
+    .contact-label {
+      color: #b1c7e7;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .email {
+      display: inline-block;
+      color: #89beff;
+      font-size: clamp(21px,3vw,30px);
+      font-weight: 750;
+      margin: 13px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: #07152b;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    .button:hover {
+      background: #83b8ff;
+      color: #07152b;
+    }
+
+    .muted { color: var(--muted); }
+
+    .soft-section {
+      background: #101e35;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .step {
+      background: #0d1a2f;
+      border: 1px solid #30415a;
+      border-radius: 16px;
+      padding: 25px;
+    }
+
+    .number {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: #193b66;
+      color: #91c2ff;
+      font-weight: 800;
+      margin-bottom: 17px;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .info-box {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 27px;
+      border-radius: 16px;
+      margin-top: 25px;
+    }
+
+    .info-box h3 { margin-top: 0; }
+    .info-box p { color: var(--muted); }
+
+    .info-box ul {
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    .info-box li { margin-bottom: 9px; }
+
+    footer {
+      padding: 27px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media(max-width: 750px) {
+      .navigation {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      nav { gap: 16px; }
+      .hero { padding: 55px 0; }
+      section { padding: 45px 0; }
+      .steps { grid-template-columns: 1fr; }
+      .contact { padding: 23px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navigation">
+      <a class="brand" href="../">
+        <span class="logo">О</span>
+        ОПОРА
+      </a>
+
+      <nav aria-label="Основная навигация">
+        <a href="../">Главная</a>
+        <a href="../#features">Возможности</a>
+        <a href="./" class="active" aria-current="page">
+          Поддержка
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="hero">
+      <div class="container">
+        <div class="eyebrow">Центр поддержки</div>
+
+        <h1>
+          Мы на связи.<br>
+          <span>Чем можем помочь?</span>
+        </h1>
+
+        <p class="lead">
+          Возник вопрос по работе приложения «Опора»?
+          Обнаружили ошибку или хотите предложить
+          новую возможность? Свяжитесь с разработчиком.
+        </p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+
+        <h2 class="section-title">
+          Связаться с разработчиком
+        </h2>
+
+        <p class="section-desc">
+          Для вопросов, технической поддержки
+          и предложений используется единый
+          официальный адрес приложения.
+        </p>
+
+        <div class="contact">
+          <div class="contact-label">
+            Официальная электронная почта
+          </div>
+
+          <a class="email" href="mailto:Opora_app@bk.ru">
+            Opora_app@bk.ru
+          </a>
+
+          <p class="muted">
+            Опишите ваш вопрос или возникшую проблему.
+            Обращения рассматриваются по мере
+            возможности.
+          </p>
+
+          <a class="button" href="mailto:Opora_app@bk.ru?subject=Поддержка%20Опоры">
+            Написать в поддержку
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section">
+      <div class="container">
+
+        <div class="eyebrow">Обратная связь</div>
+
+        <h2 class="section-title">
+          Как сообщить об ошибке
+        </h2>
+
+        <p class="section-desc">
+          Чтобы быстрее разобраться в проблеме,
+          желательно указать следующую информацию.
+        </p>
+
+        <div class="steps">
+
+          <div class="step">
+            <div class="number">1</div>
+            <h3>Устройство</h3>
+            <p>
+              Укажите модель iPhone или Mac
+              и установленную версию
+              iOS либо macOS.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="number">2</div>
+            <h3>Версия приложения</h3>
+            <p>
+              Укажите номер версии или сборки
+              «Опоры», в которой
+              обнаружена проблема.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="number">3</div>
+            <h3>Описание</h3>
+            <p>
+              Расскажите, что произошло
+              и какие действия предшествовали
+              возникновению ошибки.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="info-box">
+          <h3>Скриншоты и дополнительные материалы</h3>
+
+          <p>
+            При необходимости можно приложить
+            скриншот, если он помогает
+            продемонстрировать проблему.
+          </p>
+
+          <p>
+            Перед отправкой убедитесь, что
+            на изображениях отсутствуют
+            персональные данные, пароли
+            и конфиденциальные сведения.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <div class="eyebrow">Тестирование</div>
+
+        <h2 class="section-title">
+          Участвуете в TestFlight?
+        </h2>
+
+        <p class="section-desc">
+          После запуска бета-тестирования
+          пользователи тестовых сборок
+          смогут передавать обратную связь
+          через Apple TestFlight.
+        </p>
+
+        <div class="info-box">
+          <h3>Обратная связь от тестировщиков</h3>
+
+          <p>
+            Если при использовании тестовой
+            версии вы обнаружили ошибку
+            или хотите поделиться впечатлениями,
+            воспользуйтесь функцией отправки
+            отзыва в TestFlight.
+          </p>
+
+          <p>
+            Также можно написать непосредственно
+            на адрес технической поддержки:
+            <a href="mailto:Opora_app@bk.ru">
+              Opora_app@bk.ru
+            </a>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="soft-section">
+      <div class="container">
+
+        <div class="eyebrow">Безопасность</div>
+
+        <h2 class="section-title">
+          Защита вашей информации
+        </h2>
+
+        <p class="section-desc">
+          При обращении в поддержку
+          не отправляйте пароли, персональные
+          данные других людей, документы
+          с ограниченным доступом
+          и конфиденциальные рабочие материалы.
+        </p>
+
+        <p class="muted">
+          По вопросам конфиденциальности
+          можно обратиться на адрес:
+          <a href="mailto:Opora_app@bk.ru">
+            Opora_app@bk.ru
+          </a>.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Опора</span>
+      <span>Приложение для iPhone и Mac</span>
+      <a href="../">Вернуться на главную</a>
+    </div>
+  </footer>
+
+</body>
+</html>
